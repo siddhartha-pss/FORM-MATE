@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "SmartBank Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npm run docker:start && nodemon server.js",
+    "docker:start": "scripts\\start-compreface.bat",
+    "docker:stop": "scripts\\stop-compreface.bat",
+    "docker:status": "docker ps --filter name=compreface"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "assemblyai": "^4.33.2",
+    "axios": "^1.16.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "form-data": "^4.0.5",
+    "mongoose": "^9.6.1",
+    "multer": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

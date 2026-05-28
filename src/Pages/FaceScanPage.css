@@ -1,0 +1,201 @@
+/* src/pages/FaceScanPage.css */
+
+/* ── Full screen layout ── */
+.scan-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 40px;
+}
+
+/* ── Top bar: back button + title ── */
+.scan-topbar {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px 10px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #1a3c5e;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.scan-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0;
+}
+
+/* ── Viewfinder wrapper centers the box ── */
+.scan-viewfinder-wrapper {
+  margin: 36px 0 24px;
+}
+
+/* ── The fake camera frame ── */
+.scan-viewfinder {
+  width: 260px;
+  height: 280px;
+  border: 2px dashed #aac4e0;
+  border-radius: 20px;
+  background-color: #e8f0f8;
+  position: relative;            /* needed for corner positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Corner bracket decorations ── */
+.corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: #1a3c5e;
+  border-style: solid;
+}
+
+.top-left {
+  top: -2px;
+  left: -2px;
+  border-width: 3px 0 0 3px;
+  border-radius: 4px 0 0 0;
+}
+
+.top-right {
+  top: -2px;
+  right: -2px;
+  border-width: 3px 3px 0 0;
+  border-radius: 0 4px 0 0;
+}
+
+.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-width: 0 0 3px 3px;
+  border-radius: 0 0 0 4px;
+}
+
+.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 3px 3px 0;
+  border-radius: 0 0 4px 0;
+}
+
+/* ── Face icon in the center of the viewfinder ── */
+.scan-face-icon {
+  font-size: 80px;
+  opacity: 0.35;
+}
+
+/* ── Instruction text ── */
+.scan-instruction {
+  font-size: 15px;
+  color: #4a6a8a;
+  margin: 0 0 24px;
+}
+
+/* ── Attempt dots section ── */
+.attempt-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.attempt-label {
+  font-size: 13px;
+  color: #7a95ae;
+}
+
+.attempt-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Filled dot = attempt used */
+.dot-filled {
+  background-color: #1a3c5e;
+}
+
+/* Empty dot = attempt not yet used */
+.dot-empty {
+  background-color: #c5d8ea;
+}
+
+/* ── Scan button ── */
+.scan-btn {
+  background-color: #1a3c5e;
+  color: white;
+  border: none;
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 28px;
+}
+
+.scan-btn:hover {
+  background-color: #14304d;
+}
+
+/* ── Divider with "or" text ── */
+.divider {
+  display: flex;
+  align-items: center;
+  width: 280px;
+  margin-bottom: 20px;
+  color: #aab8c8;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #ccd9e5;
+}
+
+/* ── Fallback link button ── */
+.fallback-link {
+  background: none;
+  border: 2px solid #1a3c5e;
+  color: #1a3c5e;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fallback-link:hover {
+  background-color: #e0eaf4;
+}

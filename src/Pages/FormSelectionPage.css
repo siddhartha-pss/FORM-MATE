@@ -1,0 +1,286 @@
+/* src/pages/FormSelectionPage.css */
+
+/* ── Full screen layout ── */
+.formsel-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 48px;
+}
+
+/* ── Top bar ── */
+.formsel-topbar {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px 8px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #1a3c5e;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.formsel-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0;
+}
+
+/* ── Page heading ── */
+.formsel-heading {
+  font-size: 16px;
+  color: #4a6a8a;
+  margin: 16px 0 24px;
+  text-align: center;
+}
+
+/* ── Voice section ── */
+.voice-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 20px;
+}
+
+/* ── Mic button ── */
+.mic-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  border: 2px solid #aac4e0;
+  border-radius: 50px;         /* pill shape */
+  padding: 14px 28px;
+  font-size: 15px;
+  color: #1a3c5e;
+  cursor: pointer;
+  font-weight: 600;
+  transition: border-color 0.2s, background-color 0.2s;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mic-btn:hover {
+  border-color: #1a3c5e;
+  background-color: #eaf2fb;
+}
+
+/* Active / listening state */
+.mic-btn.mic-active {
+  border-color: #c0392b;
+  background-color: #fdf0ee;
+  color: #c0392b;
+}
+
+.mic-icon {
+  font-size: 20px;
+}
+
+/* ── Pulsing ring animation when listening ── */
+.mic-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: 2px solid #c0392b;
+  opacity: 0;
+  animation: pulse-ring 1.4s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.06); opacity: 0; }
+}
+
+/* ── Transcript box ── */
+.transcript-box {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px dashed #aac4e0;
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.transcript-placeholder {
+  font-size: 13px;
+  color: #9aafbf;
+  font-style: italic;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 28px 20px 20px;
+  color: #aab8c8;
+  font-size: 13px;
+  gap: 12px;
+  padding: 0 20px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #ccd9e5;
+}
+
+/* ── Form cards grid — 2 columns ── */
+.formsel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 0 20px;
+}
+
+/* ── Individual form card ── */
+.form-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 2px solid #d0e0ed;
+  border-radius: 14px;
+  padding: 22px 16px 18px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.form-card:hover {
+  border-color: #1a3c5e;
+  box-shadow: 0 4px 14px rgba(26, 60, 94, 0.10);
+}
+
+/* ── Selected card ── */
+.form-card-selected {
+  border-color: #1a3c5e;
+  background-color: #eaf2fb;
+  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.15);
+}
+
+.form-card-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.form-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.form-card-desc {
+  font-size: 12px;
+  color: #7a95ae;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Checkmark badge on selected card ── */
+.form-card-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background-color: #1a3c5e;
+  color: #ffffff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Selected form summary banner ── */
+.selected-summary {
+  margin-top: 24px;
+  background-color: #d6eaf8;
+  border: 1px solid #aac4e0;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 14px;
+  color: #1a3c5e;
+}
+
+.selected-summary-text strong {
+  font-weight: 700;
+}
+
+/* ── Continue button ── */
+.continue-btn {
+  margin-top: 24px;
+  padding: 16px 56px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.continue-btn.active {
+  background-color: #1a3c5e;
+  color: #ffffff;
+}
+
+.continue-btn.active:hover {
+  background-color: #14304d;
+}
+
+.continue-btn.disabled {
+  background-color: #ccd9e5;
+  color: #8aa0b5;
+  cursor: not-allowed;
+}
+
+/* ── Hint text ── */
+.formsel-hint {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #9aafbf;
+}
+
+/* Animated listening dots */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  33%       { opacity: 0.2; }
+  66%       { opacity: 0.6; }
+}
+
+.listening-dots {
+  display:         inline-block;
+  letter-spacing:  4px;
+  animation:       blink 1.2s infinite;
+}

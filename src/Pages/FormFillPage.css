@@ -1,0 +1,405 @@
+/* src/pages/FormFillPage.css */
+
+/* ── Shared container ── */
+.formfill-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 56px;
+}
+
+/* ── Top bar ── */
+.formfill-topbar {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px 8px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #1a3c5e;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.back-btn:hover { text-decoration: underline; }
+
+.formfill-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0;
+  text-align: center;
+}
+
+/* ══════════════════════════════
+   FILL VIEW STYLES
+══════════════════════════════ */
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  gap: 24px;
+  margin: 12px 0 20px;
+  font-size: 13px;
+  color: #4a6a8a;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Coloured dots in legend */
+.dot-autofill {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #aac4e0;
+  display: inline-block;
+}
+
+.dot-manual {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #c8d8c0;
+  display: inline-block;
+}
+
+/* ── Form body ── */
+.form-body {
+  width: 100%;
+  max-width: 480px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Individual field group ── */
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── Label row ── */
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a3c5e;
+}
+
+.required-star {
+  color: #c0392b;
+  font-size: 14px;
+}
+
+/* Auto-fill badge next to label */
+.autofill-badge {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #d6eaf8;
+  color: #1a5a8e;
+  border: 1px solid #aac4e0;
+  border-radius: 20px;
+  padding: 2px 9px;
+}
+
+/* ── Input field base style ── */
+.form-input {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 15px;
+  border: 1.5px solid #c0d4e8;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #1a3c5e;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-input:focus {
+  border-color: #1a3c5e;
+  box-shadow: 0 0 0 3px rgba(26, 60, 94, 0.08);
+}
+
+/* Auto-filled field — subtle blue tint */
+.input-autofill {
+  background-color: #eef5fb;
+  color: #3a6a9a;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231a3c5e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+/* ── Signature box ── */
+.signature-box {
+  width: 100%;
+  min-height: 90px;
+  border: 2px dashed #aac4e0;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+}
+
+.signature-placeholder {
+  font-size: 16px;
+  color: #b0c8de;
+  font-style: italic;
+}
+
+.signature-note {
+  font-size: 11px;
+  color: #c0d0de;
+}
+
+/* ── Preview button ── */
+.preview-btn {
+  margin-top: 32px;
+  background-color: #1a3c5e;
+  color: #ffffff;
+  border: none;
+  padding: 16px 52px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.preview-btn:hover { background-color: #14304d; }
+
+/* ══════════════════════════════
+   PREVIEW VIEW STYLES
+══════════════════════════════ */
+
+.preview-subheading {
+  font-size: 14px;
+  color: #5a7a99;
+  margin: 12px 0 20px;
+}
+
+/* ── The printable card ── */
+.preview-card {
+  width: 100%;
+  max-width: 480px;
+  background-color: #ffffff;
+  border: 1px solid #d0e0ed;
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.08);
+  margin: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Bank name + form title inside card */
+.preview-form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.preview-bank-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a95ae;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.preview-form-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0 0 14px;
+  letter-spacing: 0.5px;
+}
+
+.preview-divider-line {
+  height: 1.5px;
+  background-color: #d0e0ed;
+  border-radius: 2px;
+}
+
+/* ── Field rows inside preview ── */
+.preview-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.preview-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.preview-field-label {
+  font-weight: 600;
+  color: #4a6a8a;
+  min-width: 160px;      /* keeps all values aligned */
+  flex-shrink: 0;
+}
+
+.preview-field-colon {
+  color: #aab8c8;
+  flex-shrink: 0;
+}
+
+/* Value filled by user */
+.preview-field-value {
+  color: #1a3c5e;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* Value is still empty — show as muted dash */
+.preview-empty {
+  color: #c0d0de;
+  font-weight: 400;
+}
+
+/* Signature line in preview */
+.preview-signature-placeholder {
+  color: #c0d0de;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+/* ── Form footer: two signature lines ── */
+.preview-form-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid #e0ecf5;
+}
+
+.preview-footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 44%;
+}
+
+.preview-footer-line {
+  width: 100%;
+  height: 1px;
+  background-color: #1a3c5e;
+}
+
+.preview-footer-label {
+  font-size: 11px;
+  color: #7a95ae;
+  text-align: center;
+}
+
+/* ── Action buttons below card ── */
+.preview-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.action-btn {
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+.btn-edit {
+  background-color: #ffffff;
+  color: #1a3c5e;
+  border: 2px solid #1a3c5e;
+}
+
+.btn-edit:hover { background-color: #eaf2fb; }
+
+.btn-download {
+  background-color: #1a3c5e;
+  color: #ffffff;
+}
+
+.btn-download:hover { background-color: #14304d; }
+
+.btn-print {
+  background-color: #f0f4f8;
+  color: #4a6a8a;
+  border: 1.5px solid #c0d4e8;
+}
+
+.btn-print:hover { background-color: #e0ecf5; }
+
+/* ── Start over link ── */
+.start-over-link {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #9aafbf;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.start-over-link:hover { color: #4a6a8a; }
+
+/* ── Print media query ── */
+/* Hides everything except the form card when printing */
+@media print {
+  .formfill-topbar,
+  .preview-subheading,
+  .preview-actions,
+  .start-over-link {
+    display: none !important;
+  }
+
+  .formfill-container {
+    background: white;
+  }
+
+  .preview-card {
+    box-shadow: none;
+    border: none;
+    max-width: 100%;
+  }
+}

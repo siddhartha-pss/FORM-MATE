@@ -1,0 +1,201 @@
+/* src/pages/AccountSelectionPage.css */
+
+/* ── Full screen layout ── */
+.account-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 48px;
+}
+
+/* ── Top bar ── */
+.account-topbar {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px 8px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #1a3c5e;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.account-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0;
+}
+
+/* ── Instruction text ── */
+.account-instruction {
+  font-size: 15px;
+  color: #4a6a8a;
+  text-align: center;
+  margin: 16px 0 28px;
+  line-height: 1.6;
+}
+
+/* ── Card list: vertical stack ── */
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 0 20px;
+}
+
+/* ── Individual card ── */
+.account-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid #d0e0ed;
+  border-radius: 14px;
+  padding: 20px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.account-card:hover {
+  border-color: #1a3c5e;
+  box-shadow: 0 4px 14px rgba(26, 60, 94, 0.10);
+}
+
+/* ── Selected card style ── */
+.account-card.selected {
+  border-color: #1a3c5e;
+  background-color: #eaf2fb;
+  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.15);
+}
+
+/* ── Left section inside card ── */
+.card-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* ── Custom radio dot ── */
+.radio-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #aac4e0;
+  margin-top: 3px;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Filled state when selected */
+.radio-filled {
+  border-color: #1a3c5e;
+  background-color: #1a3c5e;
+}
+
+/* ── Account type icon ── */
+.card-icon {
+  font-size: 28px;
+  margin-top: 0px;
+  flex-shrink: 0;
+}
+
+/* ── Text content inside card ── */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a3c5e;
+  margin: 0 0 6px;
+}
+
+/* ── Each field row: "Account No : ——" ── */
+.card-field-row {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+  color: #5a7a99;
+  align-items: center;
+}
+
+.field-key {
+  font-weight: 600;
+  min-width: 82px;      /* keeps all values aligned */
+  color: #4a6a8a;
+}
+
+.field-colon {
+  color: #aab8c8;
+}
+
+/* Empty dash placeholder */
+.field-empty {
+  color: #c0cdd8;
+  letter-spacing: 2px;
+}
+
+/* ── Checkmark on selected card ── */
+.card-check {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3c5e;
+  flex-shrink: 0;
+}
+
+/* ── Continue button ── */
+.continue-btn {
+  margin-top: 32px;
+  padding: 16px 56px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+/* Active state — card is selected */
+.continue-btn.active {
+  background-color: #1a3c5e;
+  color: #ffffff;
+}
+
+.continue-btn.active:hover {
+  background-color: #14304d;
+}
+
+/* Disabled state — no card selected yet */
+.continue-btn.disabled {
+  background-color: #ccd9e5;
+  color: #8aa0b5;
+  cursor: not-allowed;
+}
+
+/* ── Hint text under button ── */
+.select-hint {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #9aafbf;
+}
