@@ -1,4 +1,6 @@
-# AI-Based Smart Form Filling System for Banks
+# FORM-MATE
+
+AI Powered Form Filling System
 
 This project is a React + Node.js banking assistant that helps users complete onboarding, KYC, and form-filling workflows with AI-powered OCR, face verification, speech recognition, and form auto-population.
 
