@@ -10,6 +10,9 @@
 import React, { useState }  from 'react';
 import { useNavigate }      from 'react-router-dom';
 import { useOnboarding }    from '../../context/OnboardingContext';
+import Dock                 from '../../components/Dock';
+import BackButton           from '../../components/BackButton';
+import OnboardingProgress   from '../../components/OnboardingProgress';
 
 // Account type definitions — icon, label, description
 const ACCOUNT_TYPES = [
@@ -68,15 +71,30 @@ function AccountTypePage() {
     navigate('/', { replace: true });
   };
 
+  const dockItems = ACCOUNT_TYPES.map((type) => ({
+    icon: (
+      <div className="account-type-dock-card">
+        <div className="account-type-dock-emoji">{type.icon}</div>
+        <div className="account-type-dock-name">{type.label}</div>
+        <div className="account-type-dock-desc">{type.description}</div>
+      </div>
+    ),
+    label: type.label,
+    onClick: () => setSelectedType(type.id),
+    className: selectedType === type.id ? 'account-type-dock-selected' : '',
+  }));
+
   return (
     <div style={{
       minHeight:       '100vh',
-      backgroundColor: '#f0f4f8',
+      backgroundColor: '#120f17',
+      color:           '#f0efee',
       fontFamily:      'Segoe UI, sans-serif',
       display:         'flex',
       flexDirection:   'column',
+      justifyContent:  'space-between',
       alignItems:      'center',
-      padding:         '0 20px 48px',
+      padding:         '24px 20px 48px',
     }}>
 
       {/* ── Top bar ── */}
@@ -88,123 +106,40 @@ function AccountTypePage() {
         alignItems:     'center',
         padding:        '24px 0 8px',
       }}>
-        <button onClick={handleCancel} style={{
-          background: 'none', border: 'none', color: '#1a3c5e',
-          fontSize: '15px', fontWeight: 700, cursor: 'pointer',
-        }}>
-          ← Back
-        </button>
-        <h2 style={{ margin: 0, color: '#1a3c5e', fontSize: '20px', fontWeight: 700 }}>
+        <BackButton label="← Back" onClick={handleCancel} />
+        <h2 style={{ margin: 0, color: '#f0efee', fontSize: '20px', fontWeight: 700 }}>
           New Account
         </h2>
         <div style={{ width: '70px' }} />
       </div>
 
-      {/* ── Step indicator ── */}
-      <div style={{ display: 'flex', gap: '8px', margin: '8px 0 24px' }}>
-        {['Account Type', 'Documents', 'Confirm', 'Face Capture', 'Done'].map((step, i) => (
-          <div key={step} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <div style={{
-              width:           '28px',
-              height:          '28px',
-              borderRadius:    '50%',
-              backgroundColor: i === 0 ? '#1a3c5e' : '#d0e0ed',
-              color:           i === 0 ? '#fff' : '#7a95ae',
-              display:         'flex',
-              alignItems:      'center',
-              justifyContent:  'center',
-              fontSize:        '12px',
-              fontWeight:      700,
-              flexShrink:      0,
-            }}>
-              {i + 1}
-            </div>
-            {i < 4 && (
-              <div style={{ width: '24px', height: '2px',
-                backgroundColor: '#d0e0ed', flexShrink: 0 }} />
-            )}
-          </div>
-        ))}
-      </div>
-
-      <p style={{ color: '#4a6a8a', fontSize: '16px', margin: '0 0 28px',
-        textAlign: 'center' }}>
-        Which type of account would you like to open?
-      </p>
-
-      {/* ── Account type cards ── */}
       <div style={{
-        display:       'flex',
-        flexDirection: 'column',
-        gap:           '14px',
-        width:         '100%',
-        maxWidth:      '480px',
+        flex:           1,
+        display:        'flex',
+        flexDirection:  'column',
+        justifyContent: 'center',
+        alignItems:     'center',
+        width:          '100%',
+        maxWidth:       '1400px',
+        gap:            '24px',
       }}>
-        {ACCOUNT_TYPES.map((type) => {
-          const isSelected = selectedType === type.id;
-          return (
-            <div
-              key={type.id}
-              onClick={() => setSelectedType(type.id)}
-              style={{
-                display:         'flex',
-                alignItems:      'center',
-                gap:             '16px',
-                backgroundColor: isSelected ? '#eaf2fb' : '#ffffff',
-                border:          `2px solid ${isSelected ? type.color : '#d0e0ed'}`,
-                borderRadius:    '14px',
-                padding:         '18px 20px',
-                cursor:          'pointer',
-                transition:      'border-color 0.2s, background-color 0.2s',
-              }}
-            >
-              {/* Radio dot */}
-              <div style={{
-                width:           '18px',
-                height:          '18px',
-                borderRadius:    '50%',
-                border:          `2px solid ${isSelected ? type.color : '#aac4e0'}`,
-                backgroundColor: isSelected ? type.color : 'transparent',
-                flexShrink:      0,
-                transition:      'all 0.2s',
-              }} />
+        <OnboardingProgress activeStepIndex={0} />
 
-              {/* Icon */}
-              <div style={{ fontSize: '28px', flexShrink: 0 }}>{type.icon}</div>
+        <p style={{ color: '#b0b8c0', fontSize: '16px', margin: 0,
+          textAlign: 'center', maxWidth: '700px' }}>
+          Which type of account would you like to open?
+        </p>
 
-              {/* Text */}
-              <div>
-                <p style={{ margin: '0 0 4px', fontWeight: 700,
-                  color: '#1a3c5e', fontSize: '15px' }}>
-                  {type.label}
-                </p>
-                <p style={{ margin: 0, fontSize: '13px', color: '#5a7a99' }}>
-                  {type.description}
-                </p>
-              </div>
-
-              {/* Selected tick */}
-              {isSelected && (
-                <div style={{
-                  marginLeft:      'auto',
-                  backgroundColor: type.color,
-                  color:           '#fff',
-                  width:           '24px',
-                  height:          '24px',
-                  borderRadius:    '50%',
-                  display:         'flex',
-                  alignItems:      'center',
-                  justifyContent:  'center',
-                  fontSize:        '13px',
-                  fontWeight:      700,
-                  flexShrink:      0,
-                }}>
-                  ✓
-                </div>
-              )}
-            </div>
-          );
-        })}
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <Dock
+          items={dockItems}
+          isVertical={false}
+          panelHeight={240}
+          baseItemSize={220}
+          magnification={260}
+          distance={260}
+          className="account-type-dock dock-center"
+        />
       </div>
 
       {/* ── Continue button ── */}
@@ -219,13 +154,15 @@ function AccountTypePage() {
           border:          'none',
           borderRadius:    '12px',
           cursor:          selectedType ? 'pointer' : 'not-allowed',
-          backgroundColor: selectedType ? '#1a3c5e' : '#ccd9e5',
-          color:           selectedType ? '#ffffff' : '#8aa0b5',
-          transition:      'background-color 0.2s',
+          backgroundColor: selectedType ? '#3b82f6' : '#2a3347',
+          color:           '#ffffff',
+          opacity:         selectedType ? 1 : 0.6,
+          transition:      'background-color 0.2s, opacity 0.2s',
         }}
       >
         Continue →
       </button>
+      </div>
 
     </div>
   );

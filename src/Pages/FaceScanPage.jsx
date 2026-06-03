@@ -174,37 +174,36 @@ function FaceScanPage() {
         <div style={{ width: '70px' }} />
       </div>
 
-      {/* ── CONFIRMATION CARD — shown after successful recognition ── */}
-      {confirming && (
+      <div className="scan-body">
+        {/* ── CONFIRMATION CARD — shown after successful recognition ── */}
+        {confirming && (
         <div style={{
-          width:           '100%',
-          maxWidth:        '400px',
-          backgroundColor: '#ffffff',
-          border:          '2px solid #1a3c5e',
+          width:           'min(100%, 520px)',
+          maxWidth:        '520px',
+          backgroundColor: '#120f17',
+          border:          '2px solid #3b82f6',
           borderRadius:    '16px',
-          padding:         '28px 24px',
+          padding:         '32px 32px',
           textAlign:       'center',
-          boxShadow:       '0 6px 24px rgba(26,60,94,0.15)',
-          marginTop:       '16px',
+          boxShadow:       '0 10px 30px rgba(0, 0, 0, 0.35)',
+          margin:          '32px auto 0',
+          minWidth:        '360px',
         }}>
 
           {/* Face check icon */}
-          <div style={{ fontSize: '48px', marginBottom: '12px' }}>🔍</div>
+          <div style={{ fontSize: '56px', marginBottom: '16px' }}>🔍</div>
 
           {/* Recognition result */}
-          <p style={{ color: '#4a6a8a', fontSize: '14px', margin: '0 0 6px' }}>
+          <p style={{ color: '#b0b8c0', fontSize: '14px', margin: '0 0 6px' }}>
             We recognized:
           </p>
-          <h2 style={{ color: '#1a3c5e', fontSize: '24px',
-            margin: '0 0 6px', fontFamily: 'Segoe UI, sans-serif' }}>
+          <h2 style={{ color: '#f0efee', fontSize: '26px',
+            margin: '0 0 24px', fontFamily: 'Segoe UI, sans-serif' }}>
             {confirming.name}
           </h2>
-          <p style={{ color: '#7a95ae', fontSize: '12px', margin: '0 0 24px' }}>
-            Confidence: {(confirming.similarity * 100).toFixed(1)}%
-          </p>
 
           {/* The confirmation question */}
-          <p style={{ color: '#1a3c5e', fontSize: '16px',
+          <p style={{ color: '#f0efee', fontSize: '16px',
             fontWeight: 700, margin: '0 0 24px' }}>
             Is this you?
           </p>
@@ -217,10 +216,10 @@ function FaceScanPage() {
               style={{
                 flex:         1,
                 padding:      '14px',
-                border:       '2px solid #1a3c5e',
+                border:       '2px solid #3b82f6',
                 borderRadius: '10px',
-                background:   '#ffffff',
-                color:        '#1a3c5e',
+                background:   '#120f17',
+                color:        '#f0efee',
                 fontSize:     '16px',
                 fontWeight:   '700',
                 cursor:       'pointer',
@@ -236,7 +235,7 @@ function FaceScanPage() {
                 padding:      '14px',
                 border:       'none',
                 borderRadius: '10px',
-                background:   '#1a3c5e',
+                background:   '#3b82f6',
                 color:        '#ffffff',
                 fontSize:     '16px',
                 fontWeight:   '700',
@@ -249,7 +248,7 @@ function FaceScanPage() {
           </div>
 
           {/* Safety note */}
-          <p style={{ color: '#9aafbf', fontSize: '11px', marginTop: '16px', lineHeight: 1.4 }}>
+          <p style={{ color: '#9aa8b8', fontSize: '11px', marginTop: '16px', lineHeight: 1.4 }}>
             If this is not you, tap No. Your details will not be accessed.
           </p>
 
@@ -331,6 +330,7 @@ function FaceScanPage() {
           </button>
         </>
       )}
+      </div>
 
     </div>
   );

@@ -105,39 +105,6 @@ const customers = [
     ],
   },
 
-  // ── 3. Sai Krishna ──
-  // Partial KYC (no PAN) | Chennai | Savings only
-  {
-    user: {
-      name:            'Sai Krishna Lingamgunta',
-      phone:           '9988776655',
-      email:           'saikrishna.v@yahoo.com',
-      dob:             new Date('2000-11-08'),
-      gender:          'Male',
-      aadhaar:         '456789012345',
-      pan:             '',              // no PAN — partial KYC
-      address: {
-        line1:   '88 Anna Nagar East',
-        line2:   '3rd Cross Street',
-        city:    'Chennai',
-        state:   'Tamil Nadu',
-        pincode: '600102',
-      },
-      faceSubjectName: 'Sai Krishna',
-      faceRegistered: true,
-      kycStatus:       'partial',      // only Aadhaar, no PAN
-    },
-    accounts: [
-      {
-        accountNumber: 'SB10000005',
-        accountType:   'savings',
-        branch:        'Chennai Anna Nagar Branch',
-        ifsc:          'ICIC0002345',
-        balance:       1250000,          // ₹12,500.00
-        status:        'active',
-      },
-    ],
-  },
 
   // ── 4. Sai Teja ──
   // Full KYC | Bangalore | Savings + Current + FD (3 accounts)

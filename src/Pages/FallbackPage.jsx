@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate }     from 'react-router-dom';
 import { useApp }          from '../context/AppContext';
 import { identifyUser }    from '../services/api';
+import BackButton          from '../components/BackButton';
 
 function FallbackPage() {
 
@@ -62,13 +63,14 @@ function FallbackPage() {
     <div style={{
       minHeight: '100vh', display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#f0f4f8', gap: '16px',
+      fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#120f17', gap: '16px',
+      color: '#f0efee',
     }}>
 
-      <h2 style={{ color: '#1a3c5e', marginBottom: '4px' }}>
+      <h2 style={{ color: '#f0efee', marginBottom: '4px' }}>
         Enter Account Details
       </h2>
-      <p style={{ color: '#5a7a99', fontSize: '14px', margin: '0 0 12px' }}>
+      <p style={{ color: '#b0b8c0', fontSize: '14px', margin: '0 0 12px' }}>
         Enter your 10-digit mobile number or account number
       </p>
 
@@ -82,8 +84,9 @@ function FallbackPage() {
         placeholder="Account No. or Mobile Number"
         style={{
           padding: '14px 20px', fontSize: '15px', borderRadius: '10px',
-          border: error ? '1.5px solid #c0392b' : '1.5px solid #aac4e0',
+          border: error ? '1.5px solid #c0392b' : '1.5px solid #2a3347',
           width: '300px', outline: 'none', fontFamily: 'Segoe UI, sans-serif',
+          backgroundColor: '#181827', color: '#f0efee',
         }}
       />
 
@@ -98,7 +101,7 @@ function FallbackPage() {
         onClick={handleContinue}
         disabled={loading}
         style={{
-          backgroundColor: loading ? '#8aa0b5' : '#1a3c5e',
+          backgroundColor: loading ? '#4b6280' : '#3b82f6',
           color: '#fff', border: 'none',
           padding: '14px 40px', fontSize: '15px',
           borderRadius: '10px', cursor: loading ? 'not-allowed' : 'pointer',
@@ -107,15 +110,11 @@ function FallbackPage() {
         {loading ? 'Searching...' : 'Continue'}
       </button>
 
-      <button
+      <BackButton
+        label="← Back to Home"
         onClick={() => navigate('/')}
-        style={{
-          background: 'none', border: 'none',
-          color: '#4a6a8a', cursor: 'pointer', fontSize: '14px',
-        }}
-      >
-        ← Back to Home
-      </button>
+        style={{ borderColor: '#7c3aed' }}
+      />
 
     </div>
   );

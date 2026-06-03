@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0f4f8;
+  background-color: #120f17;
   font-family: 'Segoe UI', sans-serif;
   padding-bottom: 48px;
 }
@@ -22,30 +22,33 @@
 }
 
 .back-btn {
-  background: none;
-  border: none;
+  background-color: #141a29;
+  border: 1.5px solid #3b82f6;
+  border-radius: 14px;
+  padding: 10px 18px;
   font-size: 15px;
-  color: #1a3c5e;
+  color: #f0efee;
   cursor: pointer;
-  font-weight: 600;
-  padding: 0;
+  font-weight: 700;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .back-btn:hover {
-  text-decoration: underline;
+  background-color: rgba(59, 130, 246, 0.12);
+  border-color: #60a5fa;
 }
 
 .account-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0;
 }
 
 /* ── Instruction text ── */
 .account-instruction {
   font-size: 15px;
-  color: #4a6a8a;
+  color: #b0b8c0;
   text-align: center;
   margin: 16px 0 28px;
   line-height: 1.6;
@@ -66,8 +69,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
-  border: 2px solid #d0e0ed;
+  background-color: #120f17;
+  border: 1px solid #2a3347;
   border-radius: 14px;
   padding: 20px 20px;
   cursor: pointer;
@@ -75,15 +78,15 @@
 }
 
 .account-card:hover {
-  border-color: #1a3c5e;
-  box-shadow: 0 4px 14px rgba(26, 60, 94, 0.10);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.15);
 }
 
 /* ── Selected card style ── */
 .account-card.selected {
-  border-color: #1a3c5e;
-  background-color: #eaf2fb;
-  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.15);
+  border-color: #3b82f6;
+  background-color: #120f17;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
 }
 
 /* ── Left section inside card ── */
@@ -98,7 +101,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 2px solid #aac4e0;
+  border: 2px solid #3a4a60;
   margin-top: 3px;
   flex-shrink: 0;
   transition: border-color 0.2s, background-color 0.2s;
@@ -106,8 +109,8 @@
 
 /* Filled state when selected */
 .radio-filled {
-  border-color: #1a3c5e;
-  background-color: #1a3c5e;
+  border-color: #3b82f6;
+  background-color: #3b82f6;
 }
 
 /* ── Account type icon ── */
@@ -127,7 +130,7 @@
 .card-label {
   font-size: 16px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0 0 6px;
 }
 
@@ -136,23 +139,23 @@
   display: flex;
   gap: 6px;
   font-size: 13px;
-  color: #5a7a99;
+  color: #9aa8b8;
   align-items: center;
 }
 
 .field-key {
   font-weight: 600;
-  min-width: 82px;      /* keeps all values aligned */
-  color: #4a6a8a;
+  min-width: 82px;
+  color: #a8b5c4;
 }
 
 .field-colon {
-  color: #aab8c8;
+  color: #5a6a7a;
 }
 
 /* Empty dash placeholder */
 .field-empty {
-  color: #c0cdd8;
+  color: #4a5a6a;
   letter-spacing: 2px;
 }
 
@@ -160,7 +163,7 @@
 .card-check {
   font-size: 20px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #3b82f6;
   flex-shrink: 0;
 }
 
@@ -178,18 +181,18 @@
 
 /* Active state — card is selected */
 .continue-btn.active {
-  background-color: #1a3c5e;
-  color: #ffffff;
+  background-color: #3b82f6;
+  color: #120f17;
 }
 
 .continue-btn.active:hover {
-  background-color: #14304d;
+  background-color: #2563eb;
 }
 
 /* Disabled state — no card selected yet */
 .continue-btn.disabled {
-  background-color: #ccd9e5;
-  color: #8aa0b5;
+  background-color: #2a3347;
+  color: #6a7a8a;
   cursor: not-allowed;
 }
 
@@ -197,5 +200,5 @@
 .select-hint {
   margin-top: 12px;
   font-size: 13px;
-  color: #9aafbf;
+  color: #6a7a8a;
 }

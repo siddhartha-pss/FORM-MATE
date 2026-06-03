@@ -6,9 +6,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0f4f8;
+  background-color: #120f17;
   font-family: 'Segoe UI', sans-serif;
-  padding-bottom: 48px;
+  padding-bottom: 240px;
 }
 
 /* ── Top bar ── */
@@ -22,30 +22,33 @@
 }
 
 .back-btn {
-  background: none;
-  border: none;
+  background-color: #141a29;
+  border: 1.5px solid #3b82f6;
+  border-radius: 14px;
+  padding: 10px 18px;
   font-size: 15px;
-  color: #1a3c5e;
+  color: #f0efee;
   cursor: pointer;
-  font-weight: 600;
-  padding: 0;
+  font-weight: 700;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .back-btn:hover {
-  text-decoration: underline;
+  background-color: rgba(59, 130, 246, 0.12);
+  border-color: #60a5fa;
 }
 
 .formsel-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0;
 }
 
 /* ── Page heading ── */
 .formsel-heading {
   font-size: 16px;
-  color: #4a6a8a;
+  color: #b0b8c0;
   margin: 16px 0 24px;
   text-align: center;
 }
@@ -67,12 +70,12 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: #ffffff;
-  border: 2px solid #aac4e0;
-  border-radius: 50px;         /* pill shape */
+  background-color: #120f17;
+  border: 1px solid #2a3347;
+  border-radius: 50px;
   padding: 14px 28px;
   font-size: 15px;
-  color: #1a3c5e;
+  color: #f0efee;
   cursor: pointer;
   font-weight: 600;
   transition: border-color 0.2s, background-color 0.2s;
@@ -82,15 +85,15 @@
 }
 
 .mic-btn:hover {
-  border-color: #1a3c5e;
-  background-color: #eaf2fb;
+  border-color: #3b82f6;
+  background-color: #120f17;
 }
 
 /* Active / listening state */
 .mic-btn.mic-active {
-  border-color: #c0392b;
-  background-color: #fdf0ee;
-  color: #c0392b;
+  border-color: #ef4444;
+  background-color: #2a1f24;
+  color: #ef4444;
 }
 
 .mic-icon {
@@ -103,7 +106,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50px;
-  border: 2px solid #c0392b;
+  border: 2px solid #ef4444;
   opacity: 0;
   animation: pulse-ring 1.4s ease-out infinite;
 }
@@ -116,8 +119,8 @@
 /* ── Transcript box ── */
 .transcript-box {
   width: 100%;
-  background-color: #ffffff;
-  border: 1px dashed #aac4e0;
+  background-color: #120f17;
+  border: 1px dashed #3a4a60;
   border-radius: 10px;
   padding: 14px 18px;
   min-height: 48px;
@@ -127,7 +130,7 @@
 
 .transcript-placeholder {
   font-size: 13px;
-  color: #9aafbf;
+  color: #6a7a8a;
   font-style: italic;
 }
 
@@ -138,7 +141,7 @@
   width: 100%;
   max-width: 480px;
   margin: 28px 20px 20px;
-  color: #aab8c8;
+  color: #5a6a7a;
   font-size: 13px;
   gap: 12px;
   padding: 0 20px;
@@ -149,7 +152,7 @@
   content: '';
   flex: 1;
   height: 1px;
-  background-color: #ccd9e5;
+  background-color: #2a3347;
 }
 
 /* ── Form cards grid — 2 columns ── */
@@ -165,8 +168,8 @@
 /* ── Individual form card ── */
 .form-card {
   position: relative;
-  background-color: #ffffff;
-  border: 2px solid #d0e0ed;
+  background-color: #120f17;
+  border: 1px solid #2a3347;
   border-radius: 14px;
   padding: 22px 16px 18px;
   cursor: pointer;
@@ -175,15 +178,15 @@
 }
 
 .form-card:hover {
-  border-color: #1a3c5e;
-  box-shadow: 0 4px 14px rgba(26, 60, 94, 0.10);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.15);
 }
 
 /* ── Selected card ── */
 .form-card-selected {
-  border-color: #1a3c5e;
-  background-color: #eaf2fb;
-  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.15);
+  border-color: #3b82f6;
+  background-color: #120f17;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
 }
 
 .form-card-icon {
@@ -194,14 +197,14 @@
 .form-card-title {
   font-size: 14px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0 0 6px;
   line-height: 1.3;
 }
 
 .form-card-desc {
   font-size: 12px;
-  color: #7a95ae;
+  color: #9aa8b8;
   margin: 0;
   line-height: 1.4;
 }
@@ -211,8 +214,8 @@
   position: absolute;
   top: 10px;
   right: 12px;
-  background-color: #1a3c5e;
-  color: #ffffff;
+  background-color: #3b82f6;
+  color: #120f17;
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -226,12 +229,12 @@
 /* ── Selected form summary banner ── */
 .selected-summary {
   margin-top: 24px;
-  background-color: #d6eaf8;
-  border: 1px solid #aac4e0;
+  background-color: #120f17;
+  border: 1px solid #2a3347;
   border-radius: 10px;
   padding: 12px 24px;
   font-size: 14px;
-  color: #1a3c5e;
+  color: #f0efee;
 }
 
 .selected-summary-text strong {
@@ -251,25 +254,98 @@
 }
 
 .continue-btn.active {
-  background-color: #1a3c5e;
-  color: #ffffff;
+  background-color: #3b82f6;
+  color: #120f17;
 }
 
 .continue-btn.active:hover {
-  background-color: #14304d;
+  background-color: #2563eb;
 }
 
 .continue-btn.disabled {
-  background-color: #ccd9e5;
-  color: #8aa0b5;
+  background-color: #2a3347;
+  color: #6a7a8a;
   cursor: not-allowed;
+}
+
+.formsel-dock-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 28px auto 100px;
+  padding: 16px 16px 0;
+  min-height: 340px;
+  gap: 22px;
+}
+
+.formsel-dock-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dock-panel.dock-horizontal.formsel-dock.dock-center,
+.dock-panel.formsel-dock.dock-center {
+  position: static !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: min(100%, 980px) !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 24px;
+  padding: 1rem 1.2rem 1.2rem;
+  margin: 0 auto 48px !important;
+}
+
+.form-dock-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 220px;
+  min-height: 190px;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.form-dock-icon {
+  font-size: 36px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-dock-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #f0efee;
+  line-height: 1.2;
+}
+
+.form-dock-desc {
+  font-size: 12px;
+  color: #9aa8b8;
+  line-height: 1.35;
+  min-height: 38px;
+}
+
+.form-dock-item-selected {
+  border-color: #3b82f6;
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.24);
 }
 
 /* ── Hint text ── */
 .formsel-hint {
   margin-top: 12px;
   font-size: 13px;
-  color: #9aafbf;
+  color: #6a7a8a;
 }
 
 /* Animated listening dots */

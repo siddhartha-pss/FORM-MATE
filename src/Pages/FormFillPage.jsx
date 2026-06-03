@@ -122,7 +122,8 @@ function FormFillPage() {
       <div style={{
         minHeight: '100vh', display: 'flex',
         alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'Segoe UI, sans-serif', color: '#4a6a8a',
+        fontFamily: 'Segoe UI, sans-serif', color: '#f0efee',
+        backgroundColor: '#120f17',
       }}>
         Loading your form...
       </div>
@@ -135,18 +136,19 @@ function FormFillPage() {
       <div style={{
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#f0f4f8', gap: '16px',
+        fontFamily: 'Segoe UI, sans-serif', backgroundColor: '#120f17', gap: '16px',
+        color: '#f0efee',
       }}>
         <div style={{ fontSize: '64px' }}>✅</div>
-        <h2 style={{ color: '#1a3c5e', margin: 0 }}>Form Submitted!</h2>
-        <p style={{ color: '#4a6a8a', textAlign: 'center', maxWidth: '320px' }}>
+        <h2 style={{ color: '#f0efee', margin: 0 }}>Form Submitted!</h2>
+        <p style={{ color: '#b0b8c0', textAlign: 'center', maxWidth: '320px' }}>
           Your <strong>{formName}</strong> has been submitted successfully.
           Please collect your acknowledgement from the counter.
         </p>
         <button
           onClick={() => { resetSession(); navigate('/', { replace: true }); }}
           style={{
-            backgroundColor: '#1a3c5e', color: '#fff', border: 'none',
+            backgroundColor: '#3b82f6', color: '#fff', border: 'none',
             padding: '14px 36px', fontSize: '15px', borderRadius: '10px',
             cursor: 'pointer', marginTop: '8px',
           }}

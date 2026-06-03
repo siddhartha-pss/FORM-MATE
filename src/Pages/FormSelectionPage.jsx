@@ -8,6 +8,7 @@ import { getAllForms }                   from '../services/api';
 import useSpeechRecognition              from '../hooks/useSpeechRecognition';
 import useSessionGuard                   from '../hooks/useSessionGuard';
 import CancelButton                      from '../components/CancelButton';
+import Dock                              from '../components/Dock';            // ← Dock component
 import { matchFormFromSpeech }           from '../utils/matchFormFromSpeech';
 import { isSpeechSupported }             from '../utils/speechSupport';
 import './FormSelectionPage.css';
@@ -104,6 +105,27 @@ function FormSelectionPage() {
     setSelectedForm(form);
     navigate('/form-fill', { replace: true });
   };
+
+  const formDockItems = forms.map((form) => ({
+    icon: (
+      <div className="form-dock-card">
+        <div className="form-dock-icon">
+          {FORM_ICONS[form.formId] || '📝'}
+        </div>
+        <div className="form-dock-title">{form.formName}</div>
+        <div className="form-dock-desc">{form.description}</div>
+      </div>
+    ),
+    label: form.formName,
+    className: selectedFormId === form.formId ? 'form-dock-item-selected' : '',
+    onClick: () => handleCardSelect(form.formId),
+  }));
+
+  const formDockRows = [];
+  const rowSize = 4;
+  for (let i = 0; i < formDockItems.length; i += rowSize) {
+    formDockRows.push(formDockItems.slice(i, i + rowSize));
+  }
 
   const micLabel = {
     'idle':        'Tap & say the form name',
@@ -208,8 +230,8 @@ function FormSelectionPage() {
         {sttSupported && (isListening || transcript || sttError) && (
           <div style={{
             width:           '100%',
-            backgroundColor: statusContent?.color === '#1e7e34' ? '#f0fff4' : '#ffffff',
-            border:          `1.5px ${statusContent?.color === '#1e7e34' ? 'solid' : 'dashed'} ${statusContent?.color || '#aac4e0'}`,
+            backgroundColor: '#141a29',
+            border:          `1.5px solid ${statusContent?.color || '#2a3347'}`,
             borderRadius:    '10px',
             padding:         '14px 18px',
             minHeight:       '52px',
@@ -225,14 +247,14 @@ function FormSelectionPage() {
                 </span>
                 <span style={{
                   fontSize:   '13px',
-                  color:      statusContent.color,
+                  color:      '#f0efee',
                   fontStyle:  transcript && !selectedFormId ? 'normal' : 'italic',
                   lineHeight: 1.4,
                 }}>
                   {statusContent.text}
                   {/* Show confidence score if available */}
                   {confidence > 0 && selectedFormId && (
-                    <span style={{ opacity: 0.6, marginLeft: '8px', fontSize: '11px' }}>
+                    <span style={{ opacity: 0.75, marginLeft: '8px', fontSize: '11px' }}>
                       ({(confidence * 100).toFixed(0)}% confidence)
                     </span>
                   )}
@@ -242,7 +264,7 @@ function FormSelectionPage() {
 
             {/* Animated dots while listening */}
             {isListening && !transcript && (
-              <span style={{ color: '#4a6a8a', fontSize: '13px' }}>
+              <span style={{ color: '#9aa8b8', fontSize: '13px' }}>
                 <span className="listening-dots">●●●</span>
               </span>
             )}
@@ -252,13 +274,13 @@ function FormSelectionPage() {
         {/* ── Keyword hints — shown when mic is active ── */}
         {isListening && (
           <div style={{
-            backgroundColor: '#f0f4f8',
+            backgroundColor: '#141a29',
             borderRadius:    '10px',
             padding:         '12px 16px',
             width:           '100%',
           }}>
             <p style={{ margin: '0 0 8px', fontSize: '12px',
-              fontWeight: 700, color: '#4a6a8a' }}>
+              fontWeight: 700, color: '#9aa8b8' }}>
               Try saying:
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
@@ -272,12 +294,12 @@ function FormSelectionPage() {
                 <span
                   key={hint}
                   style={{
-                    backgroundColor: '#ffffff',
-                    border:          '1px solid #c0d4e8',
+                    backgroundColor: '#0f172a',
+                    border:          '1px solid #2a3347',
                     borderRadius:    '20px',
                     padding:         '3px 10px',
                     fontSize:        '12px',
-                    color:           '#1a3c5e',
+                    color:           '#cbd5e1',
                   }}
                 >
                   {hint}
@@ -292,25 +314,22 @@ function FormSelectionPage() {
       {/* ── Divider ── */}
       <div className="divider"><span>or choose below</span></div>
 
-      {/* ── Form cards grid — real data from backend ── */}
-      <div className="formsel-grid">
-        {forms.map((form) => {
-          const isSelected = selectedFormId === form.formId;
-          return (
-            <div
-              key={form.formId}
-              className={`form-card ${isSelected ? 'form-card-selected' : ''}`}
-              onClick={() => handleCardSelect(form.formId)}
-            >
-              <div className="form-card-icon">
-                {FORM_ICONS[form.formId] || '📝'}
-              </div>
-              <p className="form-card-title">{form.formName}</p>
-              <p className="form-card-desc">{form.description}</p>
-              {isSelected && <div className="form-card-badge">✓</div>}
-            </div>
-          );
-        })}
+      {/* ── Form dock — real data from backend ── */}
+      <div className="formsel-dock-wrapper">
+        {formDockRows.map((rowItems, rowIndex) => (
+          <div key={rowIndex} className="formsel-dock-row">
+            <Dock
+              items={rowItems}
+              isVertical={false}
+              panelHeight={220}
+              baseItemSize={180}
+              itemWidth={200}
+              magnification={260}
+              distance={260}
+              className="formsel-dock dock-center"
+            />
+          </div>
+        ))}
       </div>
 
       {/* ── Selected form confirmation ── */}

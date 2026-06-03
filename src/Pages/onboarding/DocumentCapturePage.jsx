@@ -22,6 +22,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate }   from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
+import BackButton        from '../../components/BackButton';
+import OnboardingProgress from '../../components/OnboardingProgress';
 import { runOCR } from '../../utils/ocrApi';
 
 // ── Document steps ──
@@ -252,12 +254,14 @@ function DocumentCapturePage() {
   return (
     <div style={{
       minHeight:       '100vh',
-      backgroundColor: '#f0f4f8',
+      backgroundColor: '#120f17',
       fontFamily:      'Segoe UI, sans-serif',
       display:         'flex',
       flexDirection:   'column',
+      justifyContent:  'space-between',
       alignItems:      'center',
-      padding:         '0 20px 48px',
+      padding:         '24px 20px 48px',
+      color:           '#f0efee',
     }}>
 
       {/* ── Top bar ── */}
@@ -269,21 +273,18 @@ function DocumentCapturePage() {
         alignItems:     'center',
         padding:        '24px 0 8px',
       }}>
-        <button
+        <BackButton
+          label="← Back"
           onClick={() => {
             stopStream(streamRef.current);
             navigate('/new-user');
           }}
-          style={{ background: 'none', border: 'none', color: '#1a3c5e',
-            fontSize: '15px', fontWeight: 700, cursor: 'pointer' }}
-        >
-          ← Back
-        </button>
-        <h2 style={{ margin: 0, color: '#1a3c5e', fontSize: '20px', fontWeight: 700 }}>
+        />
+        <h2 style={{ margin: 0, color: '#f0efee', fontSize: '20px', fontWeight: 700 }}>
           {stepIndex === 0 ? 'Scan Documents' : currentStep?.label || 'Extracting...'}
         </h2>
         <button onClick={handleCancel} style={{
-          background: 'none', border: '1.5px solid #e74c3c', color: '#e74c3c',
+          background: 'none', border: '1.5px solid #ef4444', color: '#ef4444',
           padding: '6px 14px', borderRadius: '8px', fontSize: '13px',
           fontWeight: 700, cursor: 'pointer',
         }}>
@@ -291,7 +292,18 @@ function DocumentCapturePage() {
         </button>
       </div>
 
-      {/* ── Progress dots ── */}
+      <div style={{
+        flex:           1,
+        display:        'flex',
+        flexDirection:  'column',
+        justifyContent: 'center',
+        alignItems:     'center',
+        width:          '100%',
+        gap:            '22px',
+      }}>
+        <OnboardingProgress activeStepIndex={1} />
+
+        {/* ── Progress dots ── */}
       <div style={{ display: 'flex', gap: '10px', margin: '12px 0 24px' }}>
         {STEPS.map((step, i) => {
           const done    = Object.keys(capturedBlobs).includes(step.id);
@@ -318,10 +330,10 @@ function DocumentCapturePage() {
       {stepIndex === 0 && (
         <div style={{ maxWidth: '420px', width: '100%', textAlign: 'center' }}>
           <div style={{ fontSize: '56px', marginBottom: '16px' }}>📄</div>
-          <h3 style={{ color: '#1a3c5e', margin: '0 0 12px' }}>
+          <h3 style={{ color: '#f0efee', margin: '0 0 12px' }}>
             Scan your documents
           </h3>
-          <p style={{ color: '#5a7a99', fontSize: '14px', lineHeight: 1.6,
+          <p style={{ color: '#9aa8b8', fontSize: '14px', lineHeight: 1.6,
             margin: '0 0 28px' }}>
             We'll use your camera to scan three documents. Have them ready:
           </p>
@@ -331,15 +343,15 @@ function DocumentCapturePage() {
               display:         'flex',
               alignItems:      'center',
               gap:             '14px',
-              backgroundColor: '#ffffff',
-              border:          '1.5px solid #d0e0ed',
+              backgroundColor: '#141a29',
+              border:          '1.5px solid #2a3347',
               borderRadius:    '12px',
               padding:         '14px 18px',
               marginBottom:    '10px',
               textAlign:       'left',
             }}>
               <div style={{
-                backgroundColor: '#1a3c5e', color: '#fff',
+                backgroundColor: '#3b82f6', color: '#fff',
                 width: '28px', height: '28px', borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '13px', fontWeight: 700, flexShrink: 0,
@@ -348,7 +360,7 @@ function DocumentCapturePage() {
               </div>
               <span style={{ fontSize: '22px', flexShrink: 0 }}>{step.icon}</span>
               <div>
-                <p style={{ margin: 0, fontWeight: 700, color: '#1a3c5e', fontSize: '14px' }}>
+                <p style={{ margin: 0, fontWeight: 700, color: '#f0efee', fontSize: '14px' }}>
                   {step.label}
                 </p>
                 <p style={{ margin: 0, fontSize: '12px', color: '#7a95ae' }}>
@@ -367,7 +379,7 @@ function DocumentCapturePage() {
               fontWeight:      700,
               border:          'none',
               borderRadius:    '12px',
-              backgroundColor: '#1a3c5e',
+              backgroundColor: '#3b82f6',
               color:           '#ffffff',
               cursor:          'pointer',
             }}
@@ -385,15 +397,15 @@ function DocumentCapturePage() {
 
           {/* Document hint */}
           <div style={{
-            backgroundColor: '#eaf2fb',
-            border:          '1px solid #aac4e0',
+            backgroundColor: '#141a29',
+            border:          '1px solid #2a3347',
             borderRadius:    '10px',
             padding:         '10px 16px',
             marginBottom:    '16px',
             fontSize:        '13px',
-            color:           '#1a3c5e',
+            color:           '#cbd5e1',
           }}>
-            <strong>Tip:</strong> {currentStep.tip}
+            <strong style={{ color: '#f0efee' }}>Tip:</strong> {currentStep.tip}
           </div>
 
           {/* ── CAMERA VIEW (shown when live) ── */}
@@ -446,12 +458,12 @@ function DocumentCapturePage() {
                 style={{
                   width:           '100%',
                   borderRadius:    '14px',
-                  border:          '2px solid #1a3c5e',
+                  border:          '2px solid #3b82f6',
                   aspectRatio:     '4/3',
                   objectFit:       'cover',
                 }}
               />
-              <p style={{ textAlign: 'center', color: '#1e7e34',
+              <p style={{ textAlign: 'center', color: '#60a5fa',
                 fontWeight: 700, fontSize: '14px', margin: '10px 0 0' }}>
                 ✓ Image captured — looks good?
               </p>
@@ -461,8 +473,8 @@ function DocumentCapturePage() {
           {/* ── IDLE — nothing captured yet ── */}
           {cameraState === 'idle' && (
             <div style={{
-              backgroundColor: '#ffffff',
-              border:          '2px dashed #aac4e0',
+              backgroundColor: '#141a29',
+              border:          '2px dashed #2a3347',
               borderRadius:    '14px',
               aspectRatio:     '4/3',
               display:         'flex',
@@ -473,7 +485,7 @@ function DocumentCapturePage() {
               marginBottom:    '16px',
             }}>
               <span style={{ fontSize: '48px' }}>{currentStep.icon}</span>
-              <p style={{ color: '#4a6a8a', fontSize: '14px',
+              <p style={{ color: '#9aa8b8', fontSize: '14px',
                 textAlign: 'center', padding: '0 20px', margin: 0 }}>
                 {currentStep.hint}
               </p>
@@ -493,7 +505,7 @@ function DocumentCapturePage() {
                   fontWeight:      700,
                   border:          'none',
                   borderRadius:    '12px',
-                  backgroundColor: '#1a3c5e',
+                  backgroundColor: '#3b82f6',
                   color:           '#ffffff',
                   cursor:          'pointer',
                 }}
@@ -531,10 +543,10 @@ function DocumentCapturePage() {
                     padding:      '14px',
                     fontSize:     '14px',
                     fontWeight:   700,
-                    border:       '1.5px solid #1a3c5e',
+                    border:       '1.5px solid #3b82f6',
                     borderRadius: '12px',
-                    background:   '#ffffff',
-                    color:        '#1a3c5e',
+                    background:   '#141a29',
+                    color:        '#f0efee',
                     cursor:       'pointer',
                   }}
                 >
@@ -549,7 +561,7 @@ function DocumentCapturePage() {
                     fontWeight:      700,
                     border:          'none',
                     borderRadius:    '12px',
-                    backgroundColor: '#1a3c5e',
+                    backgroundColor: '#3b82f6',
                     color:           '#ffffff',
                     cursor:          'pointer',
                   }}
@@ -563,7 +575,7 @@ function DocumentCapturePage() {
 
           {/* Error */}
           {error && (
-            <p style={{ color: '#c0392b', fontSize: '13px',
+            <p style={{ color: '#f87171', fontSize: '13px',
               marginTop: '12px', textAlign: 'center' }}>
               {error}
             </p>
@@ -587,11 +599,11 @@ function DocumentCapturePage() {
                       height:       '60px',
                       objectFit:    'cover',
                       borderRadius: '8px',
-                      border:       '2px solid #1e7e34',
+                      border:       '2px solid #3b82f6',
                     }}
                   />
                   <p style={{ margin: '3px 0 0', fontSize: '10px',
-                    color: '#1e7e34', fontWeight: 700 }}>
+                    color: '#60a5fa', fontWeight: 700 }}>
                     ✓ {s.id === 'aadhaarFront'
                       ? 'Front'
                       : s.id === 'aadhaarBack'
@@ -612,20 +624,20 @@ function DocumentCapturePage() {
       {stepIndex === 4 && (
         <div style={{ textAlign: 'center', marginTop: '40px' }}>
           <div style={{ fontSize: '56px', marginBottom: '16px' }}>📝</div>
-          <h3 style={{ color: '#1a3c5e', margin: '0 0 12px' }}>
+          <h3 style={{ color: '#f0efee', margin: '0 0 12px' }}>
             Preparing your confirmation page...
           </h3>
-          <p style={{ color: '#5a7a99', fontSize: '14px', lineHeight: 1.6 }}>
+          <p style={{ color: '#9aa8b8', fontSize: '14px', lineHeight: 1.6 }}>
             You’ll review and edit your details manually before continuing.
           </p>
           {error && (
             <div style={{
               marginTop:       '20px',
-              backgroundColor: '#fdf0ee',
-              border:          '1.5px solid #e74c3c',
+              backgroundColor: '#111827',
+              border:          '1.5px solid #dc2626',
               borderRadius:    '10px',
               padding:         '14px',
-              color:           '#c0392b',
+              color:           '#fecaca',
               fontSize:        '13px',
             }}>
               {error}
@@ -636,7 +648,7 @@ function DocumentCapturePage() {
                   marginTop:    '10px',
                   background:   'none',
                   border:       'none',
-                  color:        '#1a3c5e',
+                  color:        '#60a5fa',
                   cursor:       'pointer',
                   fontWeight:   700,
                   fontSize:     '13px',
@@ -651,6 +663,7 @@ function DocumentCapturePage() {
 
       {/* Hidden canvas for frame capture */}
       <canvas ref={canvasRef} style={{ display: 'none' }} />
+      </div>
 
     </div>
   );

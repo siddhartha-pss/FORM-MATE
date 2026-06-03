@@ -7,6 +7,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../context/OnboardingContext';
+import OnboardingProgress from '../../components/OnboardingProgress';
 
 function RegistrationSuccessPage() {
 
@@ -21,7 +22,7 @@ function RegistrationSuccessPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: '#f0f4f8',
+      backgroundColor: '#120f17',
       fontFamily: 'Segoe UI, sans-serif',
       display: 'flex',
       flexDirection: 'column',
@@ -29,6 +30,7 @@ function RegistrationSuccessPage() {
       justifyContent: 'center',
       padding: '20px',
       gap: '24px',
+      color: '#f0efee',
     }}>
 
       {/* Success Icon */}
@@ -40,8 +42,9 @@ function RegistrationSuccessPage() {
       </div>
 
       {/* Success Title */}
+      <OnboardingProgress activeStepIndex={4} />
       <h1 style={{
-        color: '#1a3c5e',
+        color: '#f0efee',
         margin: 0,
         fontSize: '32px',
         fontWeight: 700,
@@ -51,7 +54,7 @@ function RegistrationSuccessPage() {
 
       {/* Success Message */}
       <p style={{
-        color: '#5a7a99',
+        color: '#9aa8b8',
         fontSize: '15px',
         textAlign: 'center',
         maxWidth: '400px',
@@ -63,14 +66,15 @@ function RegistrationSuccessPage() {
 
       {/* Account Details Summary */}
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#141a29',
         borderRadius: '16px',
         padding: '24px',
         maxWidth: '400px',
         width: '100%',
-        boxShadow: '0 4px 16px rgba(0,0,0,0.10)',
+        boxShadow: '0 4px 16px rgba(59,130,246,0.08)',
+        border: '1px solid #2a3347',
       }}>
-        <h3 style={{ color: '#1a3c5e', marginTop: 0, marginBottom: '16px', fontSize: '16px' }}>
+        <h3 style={{ color: '#f0efee', marginTop: 0, marginBottom: '16px', fontSize: '16px' }}>
           Account Details
         </h3>
         <div style={{
@@ -82,10 +86,10 @@ function RegistrationSuccessPage() {
             display: 'flex',
             justifyContent: 'space-between',
             paddingBottom: '8px',
-            borderBottom: '1px solid #e0e7f1',
+            borderBottom: '1px solid #262c3a',
           }}>
-            <span style={{ color: '#5a7a99', fontSize: '13px' }}>Name:</span>
-            <span style={{ color: '#1a3c5e', fontWeight: 600, fontSize: '13px' }}>
+            <span style={{ color: '#94a3b8', fontSize: '13px' }}>Name:</span>
+            <span style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '13px' }}>
               {confirmedData?.name || 'N/A'}
             </span>
           </div>
@@ -93,10 +97,10 @@ function RegistrationSuccessPage() {
             display: 'flex',
             justifyContent: 'space-between',
             paddingBottom: '8px',
-            borderBottom: '1px solid #e0e7f1',
+            borderBottom: '1px solid #262c3a',
           }}>
-            <span style={{ color: '#5a7a99', fontSize: '13px' }}>Date of Birth:</span>
-            <span style={{ color: '#1a3c5e', fontWeight: 600, fontSize: '13px' }}>
+            <span style={{ color: '#94a3b8', fontSize: '13px' }}>Date of Birth:</span>
+            <span style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '13px' }}>
               {confirmedData?.dob || 'N/A'}
             </span>
           </div>
@@ -104,10 +108,10 @@ function RegistrationSuccessPage() {
             display: 'flex',
             justifyContent: 'space-between',
             paddingBottom: '8px',
-            borderBottom: '1px solid #e0e7f1',
+            borderBottom: '1px solid #262c3a',
           }}>
-            <span style={{ color: '#5a7a99', fontSize: '13px' }}>Gender:</span>
-            <span style={{ color: '#1a3c5e', fontWeight: 600, fontSize: '13px' }}>
+            <span style={{ color: '#94a3b8', fontSize: '13px' }}>Gender:</span>
+            <span style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '13px' }}>
               {confirmedData?.gender || 'N/A'}
             </span>
           </div>
@@ -115,8 +119,8 @@ function RegistrationSuccessPage() {
             display: 'flex',
             justifyContent: 'space-between',
           }}>
-            <span style={{ color: '#5a7a99', fontSize: '13px' }}>City:</span>
-            <span style={{ color: '#1a3c5e', fontWeight: 600, fontSize: '13px' }}>
+            <span style={{ color: '#94a3b8', fontSize: '13px' }}>City:</span>
+            <span style={{ color: '#e2e8f0', fontWeight: 600, fontSize: '13px' }}>
               {confirmedData?.address?.city || 'N/A'}
             </span>
           </div>
@@ -125,17 +129,17 @@ function RegistrationSuccessPage() {
 
       {/* Next Steps */}
       <div style={{
-        backgroundColor: '#f0fff4',
-        borderLeft: '4px solid #1e7e34',
+        backgroundColor: '#111827',
+        borderLeft: '4px solid #3b82f6',
         borderRadius: '8px',
         padding: '16px',
         maxWidth: '400px',
         width: '100%',
         fontSize: '13px',
-        color: '#1a3c5e',
+        color: '#cbd5e1',
         lineHeight: '1.6',
       }}>
-        <strong>Next Steps:</strong>
+        <strong style={{ color: '#f0efee' }}>Next Steps:</strong>
         <ul style={{ marginTop: '8px', paddingLeft: '20px', marginBottom: 0 }}>
           <li>Your account details are securely stored</li>
           <li>Proceed to the home screen to log in</li>
@@ -148,7 +152,7 @@ function RegistrationSuccessPage() {
         onClick={handleGoHome}
         style={{
           padding: '14px 48px',
-          backgroundColor: '#1a3c5e',
+          backgroundColor: '#3b82f6',
           color: '#ffffff',
           border: 'none',
           borderRadius: '10px',

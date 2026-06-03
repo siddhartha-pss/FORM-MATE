@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+out.js
+Trail.png
+Trail.svg
+public/Trail.png
+public/Trail.svg
 
 # Editor directories and files
 .vscode/*

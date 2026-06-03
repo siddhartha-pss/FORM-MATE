@@ -6,9 +6,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0f4f8;
+  background-color: #120f17;
   font-family: 'Segoe UI', sans-serif;
   padding-bottom: 56px;
+  color: #f0efee;
 }
 
 /* ── Top bar ── */
@@ -22,21 +23,26 @@
 }
 
 .back-btn {
-  background: none;
-  border: none;
+  background-color: #141a29;
+  border: 1.5px solid #3b82f6;
+  border-radius: 14px;
+  padding: 10px 18px;
   font-size: 15px;
-  color: #1a3c5e;
+  color: #f0efee;
   cursor: pointer;
-  font-weight: 600;
-  padding: 0;
+  font-weight: 700;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-.back-btn:hover { text-decoration: underline; }
+.back-btn:hover {
+  background-color: rgba(59, 130, 246, 0.12);
+  border-color: #60a5fa;
+}
 
 .formfill-title {
   font-size: 18px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0;
   text-align: center;
 }
@@ -51,7 +57,7 @@
   gap: 24px;
   margin: 12px 0 20px;
   font-size: 13px;
-  color: #4a6a8a;
+  color: #9aa8b8;
 }
 
 .legend-item {
@@ -65,7 +71,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #aac4e0;
+  background-color: #60a5fa;
   display: inline-block;
 }
 
@@ -73,7 +79,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #c8d8c0;
+  background-color: #818cf8;
   display: inline-block;
 }
 
@@ -104,11 +110,11 @@
 .field-label {
   font-size: 14px;
   font-weight: 600;
-  color: #1a3c5e;
+  color: #f0efee;
 }
 
 .required-star {
-  color: #c0392b;
+  color: #f87171;
   font-size: 14px;
 }
 
@@ -116,9 +122,9 @@
 .autofill-badge {
   font-size: 11px;
   font-weight: 600;
-  background-color: #d6eaf8;
-  color: #1a5a8e;
-  border: 1px solid #aac4e0;
+  background-color: #1b2a45;
+  color: #c7d7ff;
+  border: 1px solid #3b82f6;
   border-radius: 20px;
   padding: 2px 9px;
 }
@@ -128,10 +134,10 @@
   width: 100%;
   padding: 13px 16px;
   font-size: 15px;
-  border: 1.5px solid #c0d4e8;
+  border: 1.5px solid #2a3347;
   border-radius: 10px;
-  background-color: #ffffff;
-  color: #1a3c5e;
+  background-color: #161b2b;
+  color: #f0efee;
   outline: none;
   transition: border-color 0.2s;
   box-sizing: border-box;
@@ -139,14 +145,14 @@
 }
 
 .form-input:focus {
-  border-color: #1a3c5e;
-  box-shadow: 0 0 0 3px rgba(26, 60, 94, 0.08);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
 /* Auto-filled field — subtle blue tint */
 .input-autofill {
-  background-color: #eef5fb;
-  color: #3a6a9a;
+  background-color: #0f172a;
+  color: #dbe6fb;
 }
 
 .form-select {
@@ -161,9 +167,9 @@
 .signature-box {
   width: 100%;
   min-height: 90px;
-  border: 2px dashed #aac4e0;
+  border: 2px dashed #2a3347;
   border-radius: 10px;
-  background-color: #f8fafc;
+  background-color: #141a29;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,19 +180,19 @@
 
 .signature-placeholder {
   font-size: 16px;
-  color: #b0c8de;
+  color: #7a95ae;
   font-style: italic;
 }
 
 .signature-note {
   font-size: 11px;
-  color: #c0d0de;
+  color: #9aa8b8;
 }
 
 /* ── Preview button ── */
 .preview-btn {
   margin-top: 32px;
-  background-color: #1a3c5e;
+  background-color: #3b82f6;
   color: #ffffff;
   border: none;
   padding: 16px 52px;
@@ -197,7 +203,7 @@
   transition: background-color 0.2s;
 }
 
-.preview-btn:hover { background-color: #14304d; }
+.preview-btn:hover { background-color: #2563eb; }
 
 /* ══════════════════════════════
    PREVIEW VIEW STYLES
@@ -213,11 +219,11 @@
 .preview-card {
   width: 100%;
   max-width: 480px;
-  background-color: #ffffff;
-  border: 1px solid #d0e0ed;
+  background-color: #141a29;
+  border: 1px solid #2a3347;
   border-radius: 14px;
   padding: 32px 28px;
-  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.08);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
   margin: 0 20px;
   box-sizing: border-box;
 }
@@ -240,14 +246,14 @@
 .preview-form-title {
   font-size: 16px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0 0 14px;
   letter-spacing: 0.5px;
 }
 
 .preview-divider-line {
   height: 1.5px;
-  background-color: #d0e0ed;
+  background-color: #2a3347;
   border-radius: 2px;
 }
 
@@ -280,20 +286,20 @@
 
 /* Value filled by user */
 .preview-field-value {
-  color: #1a3c5e;
+  color: #f0efee;
   font-weight: 500;
   flex: 1;
 }
 
 /* Value is still empty — show as muted dash */
 .preview-empty {
-  color: #c0d0de;
+  color: #5a6a80;
   font-weight: 400;
 }
 
 /* Signature line in preview */
 .preview-signature-placeholder {
-  color: #c0d0de;
+  color: #5a6a80;
   letter-spacing: 2px;
   font-size: 13px;
 }
@@ -304,7 +310,7 @@
   justify-content: space-between;
   margin-top: 36px;
   padding-top: 20px;
-  border-top: 1px solid #e0ecf5;
+  border-top: 1px solid #2a3347;
 }
 
 .preview-footer-col {
@@ -348,27 +354,27 @@
 }
 
 .btn-edit {
-  background-color: #ffffff;
-  color: #1a3c5e;
-  border: 2px solid #1a3c5e;
+  background-color: #0f172a;
+  color: #f0efee;
+  border: 2px solid #3b82f6;
 }
 
-.btn-edit:hover { background-color: #eaf2fb; }
+.btn-edit:hover { background-color: #111827; }
 
 .btn-download {
-  background-color: #1a3c5e;
+  background-color: #3b82f6;
   color: #ffffff;
 }
 
-.btn-download:hover { background-color: #14304d; }
+.btn-download:hover { background-color: #2563eb; }
 
 .btn-print {
-  background-color: #f0f4f8;
-  color: #4a6a8a;
-  border: 1.5px solid #c0d4e8;
+  background-color: #141a29;
+  color: #f0efee;
+  border: 1.5px solid #2a3347;
 }
 
-.btn-print:hover { background-color: #e0ecf5; }
+.btn-print:hover { background-color: #1f2937; }
 
 /* ── Start over link ── */
 .start-over-link {
@@ -376,12 +382,12 @@
   background: none;
   border: none;
   font-size: 13px;
-  color: #9aafbf;
+  color: #7c3aed;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.start-over-link:hover { color: #4a6a8a; }
+.start-over-link:hover { color: #93c5fd; }
 
 /* ── Print media query ── */
 /* Hides everything except the form card when printing */

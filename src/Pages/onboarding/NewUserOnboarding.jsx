@@ -107,13 +107,13 @@ export default function NewUserOnboarding({ onExit }) {
 }
 
 const styles = {
-  page:    { minHeight: "100vh", background: "#f9fafb", padding: "0 0 40px" },
-  header:  { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px", background: "#fff", borderBottom: "1px solid #e5e7eb" },
-  brand:   { margin: 0, fontSize: 18 },
+  page:    { minHeight: "100vh", background: "#120f17", padding: "0 0 40px" },
+  header:  { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 24px", background: "#120f17", borderBottom: "1px solid #2a3347" },
+  brand:   { margin: 0, fontSize: 18, color: "#f0efee" },
   exitBtn: { padding: "6px 16px", background: "#ef4444", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer" },
-  error:   { color: "red", textAlign: "center" },
-  loading: { textAlign: "center", color: "#2563eb", fontSize: 16, marginTop: 40 },
-  success: { maxWidth: 440, margin: "60px auto", textAlign: "center", background: "#fff", borderRadius: 12, padding: 40, boxShadow: "0 4px 20px rgba(0,0,0,0.08)" },
+  error:   { color: "#ef4444", textAlign: "center" },
+  loading: { textAlign: "center", color: "#3b82f6", fontSize: 16, marginTop: 40, color: "#f0efee" },
+  success: { maxWidth: 440, margin: "60px auto", textAlign: "center", background: "#120f17", borderRadius: 12, padding: 40, boxShadow: "0 4px 20px rgba(0,0,0,0.3)", border: "1px solid #2a3347", color: "#f0efee" },
   successIcon: { fontSize: 64, marginBottom: 16 },
-  doneBtn: { marginTop: 20, padding: "12px 32px", fontSize: 15, background: "#2563eb", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer" },
+  doneBtn: { marginTop: 20, padding: "12px 32px", fontSize: 15, background: "#3b82f6", color: "#fff", border: "none", borderRadius: 6, cursor: "pointer" },
 };

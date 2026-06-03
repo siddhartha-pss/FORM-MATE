@@ -16,6 +16,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate }                from 'react-router-dom';
 import axios                          from 'axios';
 import { useOnboarding }              from '../../context/OnboardingContext';
+import BackButton                     from '../../components/BackButton';
+import OnboardingProgress             from '../../components/OnboardingProgress';
 
 function ConfirmDetailsPage() {
 
@@ -127,16 +129,16 @@ function ConfirmDetailsPage() {
     <div key={field} style={{ marginBottom: '18px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between',
         alignItems: 'center', marginBottom: '5px' }}>
-        <label style={{ fontSize: '13px', fontWeight: 700, color: '#1a3c5e' }}>
-          {label}{required && <span style={{ color: '#e74c3c' }}> *</span>}
+        <label style={{ fontSize: '13px', fontWeight: 700, color: '#f0efee' }}>
+          {label}{required && <span style={{ color: '#f87171' }}> *</span>}
         </label>
         {/* Show "from OCR" badge on auto-filled fields */}
         {formData[field] && readOnlyHint && (
           <span style={{
             fontSize:        '11px',
-            backgroundColor: '#d6eaf8',
-            color:           '#1a5a8e',
-            border:          '1px solid #aac4e0',
+            backgroundColor: '#1b2a45',
+            color:           '#c7d7ff',
+            border:          '1px solid #3b82f6',
             borderRadius:    '20px',
             padding:         '1px 8px',
           }}>
@@ -152,13 +154,13 @@ function ConfirmDetailsPage() {
           width:           '100%',
           padding:         '12px 14px',
           fontSize:        '14px',
-          border:          `1.5px solid ${formData[field] ? '#1a3c5e' : '#c0d4e8'}`,
+          border:          `1.5px solid ${formData[field] ? '#3b82f6' : '#2a3347'}`,
           borderRadius:    '10px',
-          backgroundColor: formData[field] ? '#eaf2fb' : '#ffffff',
+          backgroundColor: formData[field] ? '#0f172a' : '#141a29',
           outline:         'none',
           boxSizing:       'border-box',
           fontFamily:      'Segoe UI, sans-serif',
-          color:           '#1a3c5e',
+          color:           '#f0efee',
           transition:      'border-color 0.2s, background-color 0.2s',
         }}
         placeholder={required ? `Enter ${label.toLowerCase()}` : `${label} (optional)`}
@@ -169,12 +171,14 @@ function ConfirmDetailsPage() {
   return (
     <div style={{
       minHeight:       '100vh',
-      backgroundColor: '#f0f4f8',
+      backgroundColor: '#120f17',
       fontFamily:      'Segoe UI, sans-serif',
       display:         'flex',
       flexDirection:   'column',
+      justifyContent:  'space-between',
       alignItems:      'center',
-      padding:         '0 20px 60px',
+      padding:         '24px 20px 60px',
+      color:           '#f0efee',
     }}>
 
       {/* ── Top bar ── */}
@@ -186,30 +190,38 @@ function ConfirmDetailsPage() {
         alignItems:     'center',
         padding:        '24px 0 8px',
       }}>
-        <button
+        <BackButton
+          label="← Back"
           onClick={() => navigate('/new-user/documents')}
-          style={{ background: 'none', border: 'none', color: '#1a3c5e',
-            fontSize: '15px', fontWeight: 700, cursor: 'pointer' }}
-        >
-          ← Back
-        </button>
-        <h2 style={{ margin: 0, color: '#1a3c5e', fontSize: '20px', fontWeight: 700 }}>
+        />
+        <h2 style={{ margin: 0, color: '#f0efee', fontSize: '20px', fontWeight: 700 }}>
           Confirm Details
         </h2>
         <button
           onClick={() => { resetOnboarding(); navigate('/', { replace: true }); }}
-          style={{ background: 'none', border: '1.5px solid #e74c3c',
-            color: '#e74c3c', padding: '6px 14px', borderRadius: '8px',
+          style={{ background: 'none', border: '1.5px solid #ef4444',
+            color: '#ef4444', padding: '6px 14px', borderRadius: '8px',
             fontSize: '13px', fontWeight: 700, cursor: 'pointer' }}
         >
           ✕ Cancel
         </button>
       </div>
 
+      <div style={{
+        flex:           1,
+        display:        'flex',
+        flexDirection:  'column',
+        justifyContent: 'center',
+        alignItems:     'center',
+        width:          '100%',
+        gap:            '20px',
+      }}>
+        <OnboardingProgress activeStepIndex={2} />
+
       {/* ── Info banner ── */}
       <div style={{
-        backgroundColor: '#eaf2fb',
-        border:          '1px solid #aac4e0',
+        backgroundColor: '#141a29',
+        border:          '1px solid #2a3347',
         borderRadius:    '10px',
         padding:         '12px 16px',
         marginBottom:    '20px',
@@ -217,9 +229,9 @@ function ConfirmDetailsPage() {
         maxWidth:        '480px',
         boxSizing:       'border-box',
         fontSize:        '13px',
-        color:           '#1a3c5e',
+        color:           '#cbd5e1',
       }}>
-        <strong>📝 Review your details.</strong> Fields with a blue background were
+        <strong style={{ color: '#f0efee' }}>📝 Review your details.</strong> Fields with a blue background were
         extracted from your documents. Edit anything that looks incorrect.
       </div>
 
@@ -230,18 +242,18 @@ function ConfirmDetailsPage() {
           width:           '100%',
           maxWidth:        '480px',
           marginBottom:    '16px',
-          backgroundColor: '#f8f4ff',
-          border:          '1px solid #c4a8e0',
+          backgroundColor: '#111827',
+          border:          '1px solid #3b82f6',
           borderRadius:    '8px',
           padding:         '10px 14px',
           fontSize:        '12px',
           boxSizing:       'border-box',
         }}>
-          <summary style={{ cursor: 'pointer', fontWeight: 700, color: '#6a1b9a' }}>
+          <summary style={{ cursor: 'pointer', fontWeight: 700, color: '#60a5fa' }}>
             🔍 Debug: Raw OCR data (click to expand)
           </summary>
           <pre style={{ margin: '8px 0 0', whiteSpace: 'pre-wrap',
-            color: '#4a276e', fontSize: '11px' }}>
+            color: '#cbd5e1', fontSize: '11px' }}>
             {JSON.stringify(extractedData, null, 2)}
           </pre>
         </details>
@@ -287,13 +299,13 @@ function ConfirmDetailsPage() {
           <div key={key} style={{ marginBottom: '18px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between',
               alignItems: 'center', marginBottom: '5px' }}>
-              <label style={{ fontSize: '13px', fontWeight: 700, color: '#1a3c5e' }}>
+              <label style={{ fontSize: '13px', fontWeight: 700, color: '#f0efee' }}>
                 {label}
               </label>
               {formData.address[key] && (
                 <span style={{
-                  fontSize: '11px', backgroundColor: '#d6eaf8', color: '#1a5a8e',
-                  border: '1px solid #aac4e0', borderRadius: '20px', padding: '1px 8px',
+                  fontSize: '11px', backgroundColor: '#1b2a45', color: '#c7d7ff',
+                  border: '1px solid #3b82f6', borderRadius: '20px', padding: '1px 8px',
                 }}>
                   From Aadhaar
                 </span>
@@ -307,13 +319,13 @@ function ConfirmDetailsPage() {
                 width:           '100%',
                 padding:         '12px 14px',
                 fontSize:        '14px',
-                border:          `1.5px solid ${formData.address[key] ? '#1a3c5e' : '#c0d4e8'}`,
+                border:          `1.5px solid ${formData.address[key] ? '#3b82f6' : '#2a3347'}`,
                 borderRadius:    '10px',
-                backgroundColor: formData.address[key] ? '#eaf2fb' : '#ffffff',
+                backgroundColor: formData.address[key] ? '#0f172a' : '#141a29',
                 outline:         'none',
                 boxSizing:       'border-box',
                 fontFamily:      'Segoe UI, sans-serif',
-                color:           '#1a3c5e',
+                color:           '#f0efee',
               }}
               placeholder={label}
             />
@@ -350,6 +362,7 @@ function ConfirmDetailsPage() {
 
       </div>
     </div>
+  </div>
   );
 }
 

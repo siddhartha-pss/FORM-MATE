@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #120f17;
   padding: 40px 20px;
   font-family: 'Segoe UI', sans-serif;
   box-sizing: border-box;
@@ -18,24 +18,14 @@
 .home-header {
   text-align: center;
   margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
 }
 
-.bank-logo {
-  font-size: 64px;
-  margin-bottom: 12px;
-}
-
-.bank-title {
-  font-size: 36px;
-  font-weight: 700;
-  color: #1a3c5e;
-  margin: 0;
-}
-
-.bank-subtitle {
-  font-size: 16px;
-  color: #5a7a99;
-  margin-top: 6px;
+.bank-logo-image {
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* ── Two option cards side by side ── */
@@ -47,43 +37,44 @@
 }
 
 /* ── Shared card styles ── */
-.option-card {
-  width: 260px;
-  padding: 40px 28px;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+
+/* ── BorderGlow card wrapper ── */
+.option-card-glow {
+  width: 100%;
+  max-width: 300px;
 }
 
-/* Hover lifts the card — good for kiosk touch screens */
-.option-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+/* ── Option cards inside BorderGlow ── */
+.option-card {
+  width: 100%;
+  padding: 40px 28px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #120f17;
+  color: #f0efee;
 }
 
 /* Existing user card — blue theme */
 .option-existing {
-  background-color: #1a3c5e;
-  color: #ffffff;
+  background-color: #120f17;
+  color: #f0efee;
 }
 
-/* New user card — white theme */
+/* New user card — dark theme */
 .option-new {
-  background-color: #ffffff;
-  color: #1a3c5e;
-  border: 2px solid #1a3c5e;
+  background-color: #120f17;
+  color: #f0efee;
 }
 
-/* Make New User text blue and bold, matching the theme */
+/* Make New User text light and bold */
 .option-new-title {
-  color: #1a3c5e;
+  color: #f0efee;
   font-weight: 700;
 }
 .option-new-desc {
-  color: #1a3c5e;
+  color: #f0efee;
   opacity: 0.85;
 }
 

@@ -15,6 +15,8 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate }   from 'react-router-dom';
 import axios             from 'axios';
 import { useOnboarding } from '../../context/OnboardingContext';
+import BackButton        from '../../components/BackButton';
+import OnboardingProgress from '../../components/OnboardingProgress';
 
 const MIN_CAPTURES = 5;
 const MAX_CAPTURES = 7;
@@ -254,12 +256,14 @@ function FaceCapturePage() {
   return (
     <div style={{
       minHeight:       '100vh',
-      backgroundColor: '#f0f4f8',
+      backgroundColor: '#120f17',
       fontFamily:      'Segoe UI, sans-serif',
       display:         'flex',
       flexDirection:   'column',
+      justifyContent:  'space-between',
       alignItems:      'center',
-      padding:         '0 20px 60px',
+      padding:         '24px 20px 60px',
+      color:           '#f0efee',
     }}>
 
       {/* ── Top bar ── */}
@@ -271,18 +275,15 @@ function FaceCapturePage() {
         alignItems:     'center',
         padding:        '24px 0 8px',
       }}>
-        <button
+        <BackButton
+          label="← Back"
           onClick={() => navigate('/new-user/confirm')}
-          style={{ background: 'none', border: 'none', color: '#1a3c5e',
-            fontSize: '15px', fontWeight: 700, cursor: 'pointer' }}
-        >
-          ← Back
-        </button>
-        <h2 style={{ margin: 0, color: '#1a3c5e', fontSize: '20px', fontWeight: 700 }}>
+        />
+        <h2 style={{ margin: 0, color: '#f0efee', fontSize: '20px', fontWeight: 700 }}>
           Face Registration
         </h2>
         <button onClick={handleCancel} style={{
-          background: 'none', border: '1.5px solid #e74c3c', color: '#e74c3c',
+          background: 'none', border: '1.5px solid #ef4444', color: '#ef4444',
           padding: '6px 14px', borderRadius: '8px', fontSize: '13px',
           fontWeight: 700, cursor: 'pointer',
         }}>
@@ -290,19 +291,30 @@ function FaceCapturePage() {
         </button>
       </div>
 
-      <p style={{ color: '#4a6a8a', fontSize: '14px', textAlign: 'center',
-        margin: '8px 0 20px', maxWidth: '360px' }}>
-        We need <strong>{MIN_CAPTURES}–{MAX_CAPTURES} photos</strong> of your face
-        from different angles for recognition.
-      </p>
+      <div style={{
+        flex:           1,
+        display:        'flex',
+        flexDirection:  'column',
+        justifyContent: 'center',
+        alignItems:     'center',
+        width:          '100%',
+        gap:            '20px',
+      }}>
+        <OnboardingProgress activeStepIndex={3} />
+
+        <p style={{ color: '#9aa8b8', fontSize: '14px', textAlign: 'center',
+          margin: '8px 0 20px', maxWidth: '360px' }}>
+          We need <strong style={{ color: '#f0efee' }}>{MIN_CAPTURES}–{MAX_CAPTURES} photos</strong> of your face
+          from different angles for recognition.
+        </p>
 
       {/* ── Camera error ── */}
       {cameraError && (
         <div style={{
-          backgroundColor: '#fdf0ee', border: '1.5px solid #e74c3c',
+          backgroundColor: '#111827', border: '1.5px solid #dc2626',
           borderRadius: '10px', padding: '14px 18px',
           marginBottom: '16px', width: '100%', maxWidth: '480px',
-          boxSizing: 'border-box', fontSize: '13px', color: '#c0392b',
+          boxSizing: 'border-box', fontSize: '13px', color: '#fecaca',
           textAlign: 'center',
         }}>
           {cameraError}
@@ -310,7 +322,7 @@ function FaceCapturePage() {
           <button
             onClick={startCamera}
             style={{ marginTop: '8px', background: 'none', border: 'none',
-              color: '#1a3c5e', cursor: 'pointer', fontWeight: 700 }}
+              color: '#60a5fa', cursor: 'pointer', fontWeight: 700 }}
           >
             ↺ Retry Camera
           </button>
@@ -401,13 +413,13 @@ function FaceCapturePage() {
       {/* ── Angle hint for current capture ── */}
       {cameraReady && captureCount < MAX_CAPTURES && (
         <div style={{
-          backgroundColor: '#eaf2fb',
-          border:          '1px solid #aac4e0',
+          backgroundColor: '#141a29',
+          border:          '1px solid #2a3347',
           borderRadius:    '10px',
           padding:         '10px 16px',
           marginBottom:    '16px',
           fontSize:        '14px',
-          color:           '#1a3c5e',
+          color:           '#cbd5e1',
           textAlign:       'center',
           width:           '100%',
           maxWidth:        '400px',
@@ -518,7 +530,7 @@ function FaceCapturePage() {
       )}
 
       {captureCount > 0 && captureCount < MIN_CAPTURES && (
-        <p style={{ color: '#4a6a8a', fontSize: '13px', marginTop: '8px' }}>
+        <p style={{ color: '#9aa8b8', fontSize: '13px', marginTop: '8px' }}>
           Need {MIN_CAPTURES - captureCount} more photo{MIN_CAPTURES - captureCount > 1 ? 's' : ''} to continue
         </p>
       )}
@@ -529,7 +541,7 @@ function FaceCapturePage() {
           {error}
         </p>
       )}
-
+      </div>
     </div>
   );
 }

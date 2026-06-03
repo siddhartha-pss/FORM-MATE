@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0f4f8;
+  background-color: #120f17;
   font-family: 'Segoe UI', sans-serif;
   padding-bottom: 40px;
 }
@@ -21,24 +21,37 @@
   padding: 24px 20px 10px;
 }
 
+.scan-body {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
 .back-btn {
-  background: none;
-  border: none;
+  background-color: #141a29;
+  border: 1.5px solid #3b82f6;
+  border-radius: 14px;
+  padding: 10px 18px;
   font-size: 15px;
-  color: #1a3c5e;
+  color: #f0efee;
   cursor: pointer;
-  font-weight: 600;
-  padding: 0;
+  font-weight: 700;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .back-btn:hover {
-  text-decoration: underline;
+  background-color: rgba(59, 130, 246, 0.12);
+  border-color: #60a5fa;
 }
 
 .scan-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1a3c5e;
+  color: #f0efee;
   margin: 0;
 }
 
@@ -51,9 +64,9 @@
 .scan-viewfinder {
   width: 260px;
   height: 280px;
-  border: 2px dashed #aac4e0;
+  border: 2px dashed #3a4a60;
   border-radius: 20px;
-  background-color: #e8f0f8;
+  background-color: #120f17;
   position: relative;            /* needed for corner positioning */
   display: flex;
   align-items: center;
@@ -65,7 +78,7 @@
   position: absolute;
   width: 24px;
   height: 24px;
-  border-color: #1a3c5e;
+  border-color: #f0efee;
   border-style: solid;
 }
 
@@ -100,13 +113,14 @@
 /* ── Face icon in the center of the viewfinder ── */
 .scan-face-icon {
   font-size: 80px;
-  opacity: 0.35;
+  opacity: 0.4;
+  color: #8fa3b8;
 }
 
 /* ── Instruction text ── */
 .scan-instruction {
   font-size: 15px;
-  color: #4a6a8a;
+  color: #b0b8c0;
   margin: 0 0 24px;
 }
 
@@ -121,7 +135,7 @@
 
 .attempt-label {
   font-size: 13px;
-  color: #7a95ae;
+  color: #8fa3b8;
 }
 
 .attempt-dots {
@@ -138,17 +152,17 @@
 
 /* Filled dot = attempt used */
 .dot-filled {
-  background-color: #1a3c5e;
+  background-color: #3b82f6;
 }
 
 /* Empty dot = attempt not yet used */
 .dot-empty {
-  background-color: #c5d8ea;
+  background-color: #2a3347;
 }
 
 /* ── Scan button ── */
 .scan-btn {
-  background-color: #1a3c5e;
+  background-color: #3b82f6;
   color: white;
   border: none;
   padding: 16px 48px;
@@ -161,7 +175,7 @@
 }
 
 .scan-btn:hover {
-  background-color: #14304d;
+  background-color: #2563eb;
 }
 
 /* ── Divider with "or" text ── */
@@ -170,7 +184,7 @@
   align-items: center;
   width: 280px;
   margin-bottom: 20px;
-  color: #aab8c8;
+  color: #9aa8b8;
   font-size: 13px;
   gap: 12px;
 }
@@ -180,14 +194,14 @@
   content: '';
   flex: 1;
   height: 1px;
-  background-color: #ccd9e5;
+  background-color: #2a3347;
 }
 
 /* ── Fallback link button ── */
 .fallback-link {
   background: none;
-  border: 2px solid #1a3c5e;
-  color: #1a3c5e;
+  border: 2px solid #3b82f6;
+  color: #f0efee;
   padding: 12px 32px;
   font-size: 14px;
   font-weight: 600;
@@ -197,5 +211,6 @@
 }
 
 .fallback-link:hover {
-  background-color: #e0eaf4;
+  background-color: #2a3347;
+  color: #ffffff;
 }
